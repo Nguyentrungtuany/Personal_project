@@ -21,47 +21,7 @@
             </div>
             <div class="section-bar clearfix">
                 <div class="row">
-                    <form action="{{ route('locphim') }}" method="GET">
-                        <div class="col-md-2">
-                            <div class="form-group">
-                                <select class="form-control" name="order" aria-label="exampleFormControlSelect1">
-                                    <option value="">--Sắp xếp--</option>
-                                    <option value="date">Ngày đăng</option>
-                                    <option value="year_release">Ngày sản xuất</option>
-                                    <option value="name_a_z">Tên phim</option>
-                                    <option value="watch_views">Lượt xem</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="form-group">
-                                <select class="form-control" name="genre" aria-label="exampleFormControlSelect1">
-                                    <option value="">--Thể loại--</option>
-                                    @foreach($genre as $key => $gen)
-                                    <option value="{{ $gen->id }}">{{ $gen->title }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="form-group">
-                                <select class="form-control" name="country" aria-label="exampleFormControlSelect1">
-                                    <option value="">--Quốc gia--</option>
-                                    @foreach($country as $key => $cou_filter)
-                                    <option value="{{ $cou_filter->id }}">{{ $cou_filter->title }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="form-group">
-                                {!! Form::selectYear('year', 2000, 2022, null,['class' => 'form-control','placeholder' => '--Năm phim--']) !!}
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <input type="submit" class="btn btn-sm btn-primary" value="Lọc phim">
-                        </div>
-                    </form>
+                    @include('page.include.locphim')
                 </div>
             </div>
             <div class="halim_box">

@@ -9,6 +9,7 @@ class Movie extends Model
 {
     public $timestamps = false;
     use HasFactory;
+    protected $guarded = [];
     public function category()
     {
         return $this->belongsTo(Category::class, 'category_id');
@@ -30,5 +31,6 @@ class Movie extends Model
     public function episode()
     {
         return $this->hasMany(Episode::class);
+        // hasmany giúp cho 1 phim có nhiều tập
     }
 }

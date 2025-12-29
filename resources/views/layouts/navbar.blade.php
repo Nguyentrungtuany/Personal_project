@@ -8,6 +8,7 @@
                 <!-- Desktop Menu -->
                 <div class="hidden md:flex space-x-6">
                     <a href="{{ route('genre.create') }}" class="text-gray-800 hover:text-blue-600 px-3 py-2">Home</a>
+                    <a href="{{ route('info.create') }}" class="text-gray-800 hover:text-blue-600 px-3 py-2">Thông tin website</a>
                     <a href="{{ route('genre.create') }}" class="block text-gray-800 hover:text-blue-600 px-3 py-2">Thể loại </a>
                     <a href="{{ route('category.create') }}" class="block text-gray-600 hover:text-blue-600 px-3 py-2">Danh mục phim</a>
                     <a href="{{ route('country.create') }}" class="block text-gray-600 hover:text-blue-600 px-3 py-2">Quốc gia</a>

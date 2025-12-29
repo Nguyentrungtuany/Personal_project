@@ -1,115 +1,118 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Quản lý quốc gia phim') }}
-        </h2>
-    </x-slot>
+@extends('layouts.app')
 
-    <div class="py-12">
-        <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    @if(!isset($country))
-                    {!! Form::open(['route'=>'country.store','method'=>'POST']) !!}
-                    @else
+@section('content')
 
-                    {!! Form::open(['route'=>['country.update',$country->id],'method'=>'PUT']) !!}
-                    @endif
+<div class="container my-4">
 
-                        {{-- Title --}}
-                        <div class="mb-5">
-                            {!! Form::label('title', 'Title', ['class' => 'block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300']) !!}
-                            {!! Form::text('title', isset($country) ? $country->title : '', [
-                                'class' => 'w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white',
-                                'placeholder' => 'Nhập tên danh mục',
-                                'id' => 'slug','onkeyup' => 'ChangeToSlug()'
-                            ]) !!}
-                        </div>
-                        <div class="mb-5">
-                            {!! Form::label('slug', 'Slug', ['class' => 'block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300']) !!}
-                            {!! Form::text('slug', isset($country) ? $country->slug : '', [
-                                'class' => 'w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white',
-                                'placeholder' => 'Nhập slug danh mục',
-                                'id' => 'convert_slug'
-                            ]) !!}
-                        </div>
-                        {{-- Description --}}
-                        <div class="mb-5">
-                            {!! Form::label('description', 'Mô tả', ['class' => 'block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300']) !!}
-                            {!! Form::textarea('description', isset($country) ? $country->description : '', [
-                                'rows' => 4,
-                                'class' => 'w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white resize-none',
-                                'placeholder' => 'Nhập mô tả danh mục',
-                                'id' => 'description'
-                            ]) !!}
-                        </div>
-                        
-                        <div class="mb-5">
-                            {!! Form::label('Active', 'Active', ['class' => 'block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300']) !!}
-                            {!! Form::Select('status', ['1' => 'Hiển thị', '0' => 'Không hiển thị'], isset($country) ? $country->status : '', [
-                                'class' => 'w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white',
-                                
-                            ]) !!}
-                        </div>
-
-                        {{-- Submit --}}
-                    @if(!isset($country))
-
-                        <div>
-                            {!! Form::submit('Thêm dữ liệu', [
-                                'class' => 'px-4 py-2 bg-green-600 text-white rounded-lg shadow hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 transition'
-                            ]) !!}
-
-                    @else
-                            <div>
-                            {!! Form::submit('Cập nhập', [
-                                'class' => 'px-4 py-2 bg-green-600 text-white rounded-lg shadow hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 transition'
-                            ]) !!}
-                    @endif
-                    {!! Form::close() !!}
-
-                </div>
-            </div>  
+    {{-- Hiển thị form --}}
+    <div class="card shadow-sm mb-4">
+        <div class="card-header bg-primary text-white fw-bold">
+            {{ isset($country) ? 'Cập nhật quốc gia' : 'Thêm quốc gia mới' }}
         </div>
-        <table class="table table-striped table-bordered table-hover align-middle text-center">
-  <thead class="table-dark">
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Title</th>
-      <th scope="col">Slug</th>
-      <th scope="col">Description</th>
-      <th scope="col">Acction/Inactive</th>
-      <th scope="col">Manage</th>
-    </tr>
-  </thead>
-  <tbody>
-    @foreach($list as $key => $cate)
-    
-    
-    <tr>
-      <th scope="row">{{ $key  }}</th>
-      <td>{{ $cate->title }}</td>
-      <td>{{ $cate->slug }}</td>
-      <td>{{ $cate->description }}</td>
-      <td>
-        @if($cate->status)
-            <span class="badge bg-success">Hiển thị</span>
-        @else
-            <span class="badge bg-danger">Không hiển thị</span>
-        @endif
-        
-      </td>
-      <td>
-        {!! Form::open(['method'=>'DELETE','route' => ['country.destroy', $cate->id],'onsubmit' => 'return confirm("Xóa hay ko?")']) !!}
-            {!! Form::submit('Xóa', ['class' => 'btn btn-danger btn-sm']) !!}
-        {!! Form::close() !!}
-        <a href="{{ route('country.edit', $cate->id) }}" class="btn btn-warning btn-sm">Sửa</a>
-      </td>
-    </tr>
-   @endforeach
-  </tbody>
-</table>
+        <div class="card-body">
+            @if(!isset($country))
+                {!! Form::open(['route'=>'country.store','method'=>'POST']) !!}
+            @else
+                {!! Form::open(['route'=>['country.update',$country->id],'method'=>'PUT']) !!}
+            @endif
 
+            {{-- Title --}}
+            <div class="mb-3">
+                {!! Form::label('title', 'Tên quốc gia', ['class' => 'form-label fw-semibold']) !!}
+                {!! Form::text('title', isset($country) ? $country->title : '', [
+                    'class' => 'form-control',
+                    'placeholder' => 'Nhập tên quốc gia',
+                    'id' => 'slug',
+                    'onkeyup' => 'ChangeToSlug()'
+                ]) !!}
+            </div>
+
+            {{-- Slug --}}
+            <div class="mb-3">
+                {!! Form::label('slug', 'Slug', ['class' => 'form-label fw-semibold']) !!}
+                {!! Form::text('slug', isset($country) ? $country->slug : '', [
+                    'class' => 'form-control',
+                    'placeholder' => 'Nhập slug quốc gia',
+                    'id' => 'convert_slug'
+                ]) !!}
+            </div>
+
+            {{-- Description --}}
+            <div class="mb-3">
+                {!! Form::label('description', 'Mô tả', ['class' => 'form-label fw-semibold']) !!}
+                {!! Form::textarea('description', isset($country) ? $country->description : '', [
+                    'rows' => 4,
+                    'class' => 'form-control',
+                    'placeholder' => 'Nhập mô tả quốc gia',
+                    'id' => 'description'
+                ]) !!}
+            </div>
+
+            {{-- Status --}}
+            <div class="mb-3">
+                {!! Form::label('status', 'Trạng thái', ['class' => 'form-label fw-semibold']) !!}
+                {!! Form::select('status', ['1' => 'Hiển thị', '0' => 'Không hiển thị'], isset($country) ? $country->status : '', [
+                    'class' => 'form-select',
+                ]) !!}
+            </div>
+
+            {{-- Submit --}}
+            <div class="mt-3">
+                @if(!isset($country))
+                    {!! Form::submit('Thêm dữ liệu', ['class' => 'btn btn-success px-4']) !!}
+                @else
+                    {!! Form::submit('Cập nhật', ['class' => 'btn btn-primary px-4']) !!}
+                @endif
+            </div>
+
+            {!! Form::close() !!}
+        </div>
     </div>
-</x-app-layout>
- 
+
+    {{-- Bảng danh sách --}}
+    {{-- <div class="card shadow-sm">
+        <div class="card-header bg-dark text-white fw-bold">
+            Danh sách quốc gia
+        </div>
+        <div class="card-body p-0">
+            <table class="table table-striped table-bordered table-hover align-middle text-center mb-0">
+                <thead class="table-dark">
+                    <tr>
+                        <th>#</th>
+                        <th>Tên quốc gia</th>
+                        <th>Slug</th>
+                        <th>Mô tả</th>
+                        <th>Trạng thái</th>
+                        <th>Quản lý</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($list as $key => $cate)
+                    <tr>
+                        <td>{{ $key }}</td>
+                        <td>{{ $cate->title }}</td>
+                        <td>{{ $cate->slug }}</td>
+                        <td>{{ $cate->description }}</td>
+                        <td>
+                            @if($cate->status)
+                                <span class="badge bg-success">Hiển thị</span>
+                            @else
+                                <span class="badge bg-danger">Không hiển thị</span>
+                            @endif
+                        </td>
+                        <td class="d-flex justify-content-center gap-2">
+                            {!! Form::open(['method'=>'DELETE','route' => ['country.destroy', $cate->id],'onsubmit' => 'return confirm("Xóa hay ko?")']) !!}
+                                {!! Form::submit('Xóa', ['class' => 'btn btn-danger btn-sm']) !!}
+                            {!! Form::close() !!}
+                            <a href="{{ route('country.edit', $cate->id) }}" class="btn btn-warning btn-sm">Sửa</a>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div> --}}
+
+</div>
+
+@endsection

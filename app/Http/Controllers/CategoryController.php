@@ -11,7 +11,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $list = Category::orderBy('position', 'ASC')->get();
+        return view('admincp.category.index', compact('list'));
     }
 
     /**
@@ -19,8 +20,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        $list = Category::orderBy('position', 'ASC')->get();
-        return view('admincp.category.from', compact('list'));
+        return view('admincp.category.from');
     }
 
     /**
@@ -28,7 +28,22 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
+        // $data = $request->all();
+        $data = $request->validate([
+        'title' => 'required|unique:categories|max:255',
+        'slug' => 'required|unique:categories|max:255',
+        'description' => 'required|max:255',
+        'status' => 'required',
+    ],
+    [
+        'title.unique' => 'Tiêu đề đã tồn tại',
+        'title.required' => 'Tiêu đề không được để trống',
+        'slug.required' => 'Slug không được để trống',
+        'slug.unique' => 'Slug đã tồn tại',
+        'description.required' => 'Mô tả không được để trống',
+        'status.required' => 'Trạng thái không được để trống',
+    ]
+);
         $maxPosition = Category::max('position') ?? 0;
 
         $category = new Category();
@@ -39,8 +54,9 @@ class CategoryController extends Controller
         $category->position = $maxPosition + 1; 
 
         $category->save();
+        toastr()->success('Thêm thành công!');
 
-        return redirect()->back();
+        return redirect()->route('category.index');
     }
 
     /**
@@ -73,7 +89,7 @@ class CategoryController extends Controller
         $category->status = $data['status'];
         $category->save();
 
-        return redirect()->back();
+        return redirect()->route('category.index');
     }
 
     /**

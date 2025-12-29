@@ -7,11 +7,16 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "guzzlehttp/guzzle": "^7.9",
         "laravel/breeze": "^2.3",
         "laravel/framework": "^12.0",
         "laravel/tinker": "^2.10.1",
         "laravel/ui": "*",
-        "rdx/laravelcollective-html": "^6.9"
+        "rdx/laravelcollective-html": "^6.9",
+        "roumen/sitemap": "^1.0",
+        "rumenx/php-sitemap": "^1.0",
+        "spatie/laravel-sitemap": "^7.3",
+        "yoeunes/toastr": "^3.1"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",

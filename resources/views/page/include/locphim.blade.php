@@ -1,30 +1,14 @@
-@extends('layout')
-@section('content')
-<div class="row container" id="wrapper">
-    <div class="halim-panel-filter">
-        <div class="panel-heading">
-            <div class="row">
-                <div class="col-xs-6">
-                    <div class="yoast_breadcrumb hidden-xs"><span><span><a href="">Lọc phim</a> » <span
-                                    class="breadcrumb_last" aria-current="page">2020</span></span></span></div>
-                </div> 
-            </div>
-        </div>
-        <div id="ajax-filter" class="panel-collapse collapse" aria-expanded="true" role="menu">
-            <div class="ajax"></div>
-        </div>
-    </div>
-    <main id="main-contents" class="col-xs-12 col-sm-12 col-md-8">
-        <section>
-            <div class="section-bar clearfix">
-                <h1 class="section-title"><span>Lọc phim</span></h1>
-            </div>
-            <div class="section-bar clearfix">
-                <div class="row">
-                    <form action="{{ route('locphim') }}" method="GET">
+    <form action="{{ route('locphim') }}" method="GET">
+        <style>
+                            .stylish_filter{
+                                border: 0;
+                                background: #12171b;
+                                color: #fff;
+                            }
+                        </style>
                         <div class="col-md-2">
                             <div class="form-group">
-                                <select class="form-control" name="order" aria-label="exampleFormControlSelect1">
+                                <select class="form-control stylish_filter" name="order" aria-label="exampleFormControlSelect1">
                                     <option value="">--Sắp xếp--</option>
                                     <option value="date">Ngày đăng</option>
                                     <option value="year_release">Ngày sản xuất</option>
@@ -35,93 +19,37 @@
                         </div>
                         <div class="col-md-2">
                             <div class="form-group">
-                                <select class="form-control" name="genre" aria-label="exampleFormControlSelect1">
+                                <select class="form-control stylish_filter" name="genre" aria-label="exampleFormControlSelect1">
                                     <option value="">--Thể loại--</option>
-                                    @foreach($genre as $key => $gen)
-                                    <option value="{{ $gen->id }}">{{ $gen->title }}</option>
+                                    @foreach($genre_home as $key => $gen_filter)
+                                    <option {{isset($_GET['genre']) && $_GET['genre'] == $gen_filter->id ? 'selected' : ''}} value="{{ $gen_filter->id }}">{{ $gen_filter->title }}</option>
                                     @endforeach
                                 </select>
                             </div>
                         </div>
                         <div class="col-md-2">
                             <div class="form-group">
-                                <select class="form-control" name="country" aria-label="exampleFormControlSelect1">
+                                <select class="form-control stylish_filter" name="country" aria-label="exampleFormControlSelect1">
                                     <option value="">--Quốc gia--</option>
-                                    @foreach($country as $key => $cou_filter)
-                                    <option value="{{ $cou_filter->id }}">{{ $cou_filter->title }}</option>
+                                    @foreach($country_home as $key => $cou_filter)
+                                    <option {{isset($_GET['country']) && $_GET['country'] == $cou_filter->id ? 'selected' : ''}} value="{{ $cou_filter->id }}">{{ $cou_filter->title }}</option>
                                     @endforeach
                                 </select>
                             </div>
                         </div>
                         <div class="col-md-2">
                             <div class="form-group">
-                                {!! Form::selectYear('year', 2000, 2022, null,['class' => 'form-control','placeholder' => '--Năm phim--']) !!}
+                                @php
+                                    if(isset($_GET['year'])) {
+                                        $year = $_GET['year'];
+                                    } else {
+                                        $year = null;
+                                    }
+                                @endphp
+                                {!! Form::selectYear('year', 2000, 2022, null,['class' => 'form-control stylish_filter','placeholder' => '--Năm phim--']) !!}
                             </div>
                         </div>
                         <div class="col-md-2">
                             <input type="submit" class="btn btn-sm btn-primary" value="Lọc phim">
                         </div>
-                    </form>
-                </div>
-            </div>
-            <div class="halim_box">
-                @foreach($movie as $key => $mov)
-                <article class="col-md-3 col-sm-3 col-xs-6 thumb grid-item post-37606">
-                    <div class="halim-item">
-                        <a class="halim-thumb" href="{{ route('movie', $mov->slug) }}">
-                            <figure><img class="lazy img-responsive" src="{{ asset('uploads/movie/'.$mov->image) }}"
-                                    alt="{{ $mov->title }}" title="{{ $mov->title }}"></figure>
-                            <span class="status">@if($mov->resolution==0)
-                                HD
-                                @elseif($mov->resolution==1)
-                                SD
-                                @elseif($mov->resolution==2)
-                                HDcam
-                                @elseif($mov->resolution==3)
-                                Cam
-                                @elseif($mov->resolution==4)
-                                FullHD
-                                @else
-                                Trailer
-                                @endif</span><span class="episode"><i class="fa fa-play"
-                                    aria-hidden="true"></i>@if($mov->phude==0)
-                                Phụ đề
-                                @if($mov->season!=0)
-                                - Season. {{ $mov->season }}
-                                @endif
-                                @else
-                                Thuyết minh
-                                @if($mov->season!=0)
-                                - Season. {{ $mov->season }}
-                                @endif
-                                @endif</span>
-                            <div class="icon_overlay"></div>
-                            <div class="halim-post-title-box">
-                                <div class="halim-post-title ">
-                                    <p class="entry-title">{{ $mov->title }}</p>
-                                    <p class="original_title">{{ $mov->name_eng}}</p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </article>
-                @endforeach
-
-
-            </div>
-            <div class="clearfix"></div>
-            <div class="text-center">
-                <ul class='page-numbers'>
-                    <li><span aria-current="page" class="page-numbers current">1</span></li>
-                    <li><a class="page-numbers" href="">2</a></li>
-                    <li><a class="page-numbers" href="">3</a></li>
-                    <li><span class="page-numbers dots">&hellip;</span></li>
-                    <li><a class="page-numbers" href="">55</a></li>
-                    <li><a class="next page-numbers" href=""><i class="hl-down-open rotate-right"></i></a></li>
-                </ul>
-            </div>
-        </section>
-    </main>
-    @include('page.include.sidebar')
-</div>
-@endsection
+    </form>

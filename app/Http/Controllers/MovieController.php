@@ -13,21 +13,110 @@ use PhpParser\Node\Expr\AssignOp\Mod;
 use Carbon\Carbon;
 // use Faker\Core\File;
 use Illuminate\Support\Facades\File;
+use PHPUnit\Framework\Constraint\Count;
+use SebastianBergmann\LinesOfCode\Counter;
+
+use function Pest\Laravel\json;
+
 class MovieController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    public function update_image_movie_ajax(Request $request)
+{
+    try {
+        $get_image = $request->file('file');
+        $movie_id = $request->movie_id;
+
+        if ($get_image) {
+            $movie = Movie::find($movie_id);
+
+            // Xóa ảnh cũ
+            if ($movie->image && file_exists(public_path('uploads/movie/'.$movie->image))) {
+                unlink(public_path('uploads/movie/'.$movie->image));
+            }
+
+            // Tạo tên mới
+            $get_name_image = $get_image->getClientOriginalName();
+            $name_image = pathinfo($get_name_image, PATHINFO_FILENAME);
+            $new_image = $name_image.rand(0,99).'.'.$get_image->getClientOriginalExtension();
+
+            // Upload
+            $get_image->move(public_path('uploads/movie/'), $new_image);
+
+            // Cập nhật DB
+            $movie->image = $new_image;
+            $movie->save();
+        }
+
+        return response()->json(['success' => true]);
+
+    } catch (\Exception $e) {
+        return response()->json([
+            'success' => false,
+            'error' => $e->getMessage()
+        ], 500);
+    }
+}
+
+    public function resolution_choose(Request $request){
+        $data = $request->all();
+        $movie = Movie::find($data['movie_id']);
+        $movie->resolution = $data['resolution_id'];
+        $movie->save();
+
+    }
+    public function phude_choose(Request $request){
+        $data = $request->all();
+        $movie = Movie::find($data['movie_id']);
+        $movie->phude = $data['phude_id'];
+        $movie->save();
+
+    }
+    public function phimhot_choose(Request $request){
+        $data = $request->all();
+        $movie = Movie::find($data['movie_id']);
+        $movie->phim_hot = $data['phimhot_id'];
+        $movie->save();
+
+    }
+    public function thuocphim_choose(Request $request){
+        $data = $request->all();
+        $movie = Movie::find($data['movie_id']);
+        $movie->thuocphim = $data['thuocphim_id'];
+        $movie->save();
+
+    }
+    public function trangthai_choose(Request $request){
+        $data = $request->all();
+        $movie = Movie::find($data['movie_id']);
+        $movie->status = $data['trangthai_id'];
+        $movie->save();
+
+    }
+    public function country_choose(Request $request){
+        $data = $request->all();
+        $movie = Movie::find($data['movie_id']);
+        $movie->country_id = $data['country_id'];
+        $movie->save();
+
+    }
+    public function category_choose(Request $request){
+        $data = $request->all();
+        $movie = Movie::find($data['movie_id']);
+        $movie->category_id = $data['category_id'];
+        $movie->save();
+
+    }
     public function index()
     {
         $list = Movie::with('category', 'movie_genre', 'country','genre')->withCount('episode')->orderBy('id', 'DESC')->get();
-
+        $category = Category::pluck('title', 'id');
+        $country = Country::pluck('title', 'id');
         $path = public_path('/json/');
         if(!is_dir($path)){
             mkdir($path,0777,true);
         }
         File::put($path.'movies.json', json_encode($list));
-        return view('admincp.movie.index', compact('list')); // gọi file resources/views/admincp/movie/from.blade.php
+        return view('admincp.movie.index', compact('list', 'category','country')); // gọi file resources/views/admincp/movie/from.blade.php
     }
     public function update_year(Request $request)
     {
@@ -70,7 +159,11 @@ class MovieController extends Controller
             } else {
                 $text = 'Trailer';
             }
-
+            if ($mov->count_views > 0) {
+                $viewCount = number_format($mov->count_views);
+            } else {
+                $viewCount = rand(100, 99999);
+            }
             $output .= ' <div class="item post-37176">
                               <a href="' . url('phim/' . $mov->slug) . '" title="' . $mov->title . '">
                                  <div class="item-link">
@@ -79,12 +172,17 @@ class MovieController extends Controller
                                  </div>
                                  <p class="title">' . $mov->title . '</p>
                               </a>
-                              <div class="viewsCount" style="color: #9d9d9d;">3.2K lượt xem</div>
-                              <div style="float: left;">
-                                 <span class="user-rate-image post-large-rate stars-large-vang" style="display: block;/* width: 100%; */">
-                                 <span style="width: 0%"></span>
-                                 </span>
-                              </div>
+                              <div class="viewsCount" style="color: #9d9d9d;">' . $viewCount . ' lượt xem</div>
+                              <div class="viewsCount" style="color: #9d9d9d;">' . $mov->year . '</div>
+
+                        <div style="float: left;">
+                            <ul class="list-inline rating" title="Average Rating">
+                            ';
+                                for($count = 1; $count <= 5; $count++){
+                                   $output .= '<li title="star_rating" style="font-size: 20px; color: #ffcc00; padding: 0">&#9733;</li>';
+                            }
+
+                            $output .= '<ul class="list-inline-rating" title="Average Rating">
                            </div> ';
         }
         echo $output;
@@ -108,7 +206,11 @@ class MovieController extends Controller
             } else {
                 $text = 'Trailer';
             }
-
+            if ($mov->count_views > 0) {
+                $viewCount = number_format($mov->count_views);
+            } else {
+                $viewCount = rand(100, 99999);
+            }
             $output .= ' <div class="item post-37176">
                               <a href="' . url('phim/' . $mov->slug) . '" title="' . $mov->title . '">
                                  <div class="item-link">
@@ -117,12 +219,17 @@ class MovieController extends Controller
                                  </div>
                                  <p class="title">' . $mov->title . '</p>
                               </a>
-                              <div class="viewsCount" style="color: #9d9d9d;">3.2K lượt xem</div>
-                              <div style="float: left;">
-                                 <span class="user-rate-image post-large-rate stars-large-vang" style="display: block;/* width: 100%; */">
-                                 <span style="width: 0%"></span>
-                                 </span>
-                              </div>
+                              <div class="viewsCount" style="color: #9d9d9d;">' . $viewCount . ' lượt xem</div>
+                              <div class="viewsCount" style="color: #9d9d9d;">' . $mov->year . '</div>
+
+                        <div style="float: left;">
+                            <ul class="list-inline rating" title="Average Rating">
+                            ';
+                                for($count = 1; $count <= 5; $count++){
+                                   $output .= '<li title="star_rating" style="font-size: 20px; color: #ffcc00; padding: 0">&#9733;</li>';
+                            }
+
+                            $output .= '<ul class="list-inline-rating" title="Average Rating">
                            </div> ';
         }
         echo $output;
@@ -145,12 +252,44 @@ class MovieController extends Controller
      */
     public function store(Request $request)
     {
+//         $data = $request->validate([
+//     'title' => 'required|unique:categories|max:500',
+//     'slug' => 'required|unique:categories|max:500',
+//     'description' => 'required|max:500',
+//     'hinhanh' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048|dimensions:min_width=100,min_height=100,max_width=2000,max_height=2000',
+//     'status' => 'required',
+// ], [
+//     // Messages cho title
+//     'title.required' => 'Tiêu đề không được để trống',
+//     'title.unique' => 'Tiêu đề đã tồn tại',
+//     'title.max' => 'Tiêu đề không được vượt quá 500 ký tự',
+    
+//     // Messages cho slug
+//     'slug.required' => 'Slug không được để trống',
+//     'slug.unique' => 'Slug đã tồn tại',
+//     'slug.max' => 'Slug không được vượt quá 500 ký tự',
+    
+//     // Messages cho description
+//     'description.required' => 'Mô tả không được để trống',
+//     'description.max' => 'Mô tả không được vượt quá 500 ký tự',
+    
+//     // Messages cho hinhanh
+//     'hinhanh.required' => 'Hình ảnh không được để trống',
+//     'hinhanh.image' => 'File phải là hình ảnh',
+//     'hinhanh.mimes' => 'Hình ảnh phải có định dạng: jpeg, png, jpg, gif, svg',
+//     'hinhanh.max' => 'Kích thước hình ảnh không được vượt quá 2MB',
+//     'hinhanh.dimensions' => 'Kích thước hình ảnh phải từ 100x100px đến 2000x2000px',
+    
+//     // Messages cho status
+//     'status.required' => 'Trạng thái không được để trống',
+// ]);
         $data = $request->all();
         $movie = new Movie();
         $movie->title = $data['title'];
         $movie->tags = $data['tags'];
         $movie->trailer = $data['trailer'];
         $movie->sotap = $data['sotap'];
+        $movie->count_views = rand(100,99999);
         $movie->phim_hot = $data['phim_hot'];
         $movie->resolution = $data['resolution'];
         $movie->thoiluong = $data['thoiluong'];
@@ -223,6 +362,7 @@ class MovieController extends Controller
         $movie->title = $data['title'];
         $movie->trailer = $data['trailer'];
         $movie->sotap = $data['sotap'];
+        // $movie->count_views = rand(100,99999);
         $movie->name_eng = $data['name_eng'];
         $movie->phim_hot = $data['phim_hot'];
         $movie->resolution = $data['resolution'];
@@ -281,4 +421,14 @@ class MovieController extends Controller
         $movie->delete();
         return redirect()->back();
     }
+    public function watch_video(Request $request){
+        $data = $request->all();
+        $movie = Movie::find($data['movie_id']);
+        $video = Episode::where('movie_id',$data['movie_id'])->where('episode',$data['episode_id'])->first();
+        $output['video_title'] = $movie->title.' - Tập '.$video->episode;
+        $output['video_desc'] = $movie->description;
+        $output['video_link'] = $video->linkphim;
+        return json_encode($output);
+    }
+
 }

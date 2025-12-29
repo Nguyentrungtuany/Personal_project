@@ -19,6 +19,11 @@
                <div id="ajax-filter" class="panel-collapse collapse" aria-expanded="true" role="menu">
                   <div class="ajax"></div>
                </div>
+               <div class="section-bar clearfix">
+                <div class="row">
+                    @include('page.include.locphim')
+                </div>
+            </div>
             </div>
             <main id="main-contents" class="col-xs-12 col-sm-12 col-md-8">
                <section>
@@ -47,8 +52,7 @@
                                 Phụ đề 
                                 @if($mov->season!=0)
                                     - Season {{ $mov->season }}
-                                @endif
-                                @else
+                                                            @else
                                 Thuyết minh
                                  @if($mov->season!=0)
                                     - Season {{ $mov->season }}
