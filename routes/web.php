@@ -51,6 +51,8 @@ Route::get('/update-year-phim', [MovieController::class, 'update_year']);
 Route::get('/update-topview-phim', [MovieController::class, 'update_topview']);
 Route::post('/filter-topview-phim', [MovieController::class, 'filter_topview']);
 Route::get('/filter-topview-default', [MovieController::class, 'filter_default']);
+Route::get('/sort_movie', [MovieController::class, 'sort_movie'])->name('sort_movie');
+Route::post('/resorting_navbar', [MovieController::class, 'resorting_navbar'])->name('resorting_navbar');
 Route::post('/update-season-phim', [MovieController::class, 'update_season']);
 // thay đổi dữ liệu movie bằng ajax
 

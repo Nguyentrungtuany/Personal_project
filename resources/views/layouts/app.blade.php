@@ -8,65 +8,93 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <html>
 
 <head>
-  <title>
-    Admin web phim
-  </title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta name="csrf-token" content="{{ csrf_token() }}">
-  <meta name="keywords" content="Admin web phimn" />
-  <script type="application/x-javascript">
-    addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+    <title>
+        Admin web phim
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="keywords" content="Admin web phimn" />
+    <script type="application/x-javascript">
+        addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 
                       function hideURLbar() { window.scrollTo(0, 1); }
-  </script>
-  <!-- Bootstrap Core CSS -->
-  <link href="{{ asset('backend/css/bootstrap.css') }}" rel="stylesheet" type="text/css" />
-  <!-- Custom CSS -->
-  <link href="{{ asset('backend/css/style.css') }}" rel="stylesheet" type="text/css" />
-  <!-- font-awesome icons CSS -->
-  <link href="{{ asset('backend/css/font-awesome.css') }}" rel="stylesheet" />
-  <!-- //font-awesome icons CSS-->
-  <!-- side nav css file -->
-  <link rel="stylesheet" href="//cdn.datatables.net/2.3.3/css/dataTables.dataTables.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-  <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    </script>
+    <!-- Bootstrap Core CSS -->
+    <link href="{{ asset('backend/css/bootstrap.css') }}" rel="stylesheet" type="text/css" />
+    <!-- Custom CSS -->
+    <link href="{{ asset('backend/css/style.css') }}" rel="stylesheet" type="text/css" />
+    <!-- font-awesome icons CSS -->
+    <link href="{{ asset('backend/css/font-awesome.css') }}" rel="stylesheet" />
+    <!-- //font-awesome icons CSS-->
+    <!-- side nav css file -->
+    <link rel="stylesheet" href="//cdn.datatables.net/2.3.3/css/dataTables.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 
 
 
-  <link href="{{ asset('backend/css/SidebarNav.min.css') }}" media="all" rel="stylesheet" type="text/css" />
-  <!-- //side nav css file -->
-  <!-- js-->
-  <script src="{{ asset('backend/js/jquery-1.11.1.min.js') }}"></script>
-  <script src="{{ asset('backend/js/modernizr.custom.js') }}"></script>
-  <!--webfonts-->
-  <link href="//fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i&amp;subset=cyrillic,cyrillic-ext,latin-ext"
-    rel="stylesheet" />
-  <!--//webfonts-->
-  <!-- chart -->
-  <script src="{{ asset('backend/js/Chart.js') }}"></script>
-  <!-- //chart -->
-  <!-- Metis Menu -->
-  <script src="{{ asset('backend/js/metisMenu.min.js') }}"></script>
-  <script src="{{ asset('backend/js/custom.js') }}"></script>
-  <link href="{{ asset('backend/css/custom.css') }}" rel="stylesheet" />
-  <!--//Metis Menu -->
-  <style>
-    #chartdiv {
-      width: 100%;
-      height: 295px;
-    }
-  </style>
-  <!--pie-chart -->
-  <!-- index page sales reviews visitors pie chart -->
-  <script src="{{ asset('backend/js/pie-chart.js') }}" type="text/javascript"></script>
-  <script type="text/javascript">
-    $(document).ready(function () {
+    <link href="{{ asset('backend/css/SidebarNav.min.css') }}" media="all" rel="stylesheet" type="text/css" />
+    <!-- //side nav css file -->
+    <!-- js-->
+    <script src="{{ asset('backend/js/jquery-1.11.1.min.js') }}"></script>
+    <script src="{{ asset('backend/js/modernizr.custom.js') }}"></script>
+    <!--webfonts-->
+    <link href="//fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i&amp;subset=cyrillic,cyrillic-ext,latin-ext"
+        rel="stylesheet" />
+    <!--//webfonts-->
+    <!-- chart -->
+    <script src="{{ asset('backend/js/Chart.js') }}"></script>
+    <!-- //chart -->
+    <!-- Metis Menu -->
+    <script src="{{ asset('backend/js/metisMenu.min.js') }}"></script>
+    <script src="{{ asset('backend/js/custom.js') }}"></script>
+    <link href="{{ asset('backend/css/custom.css') }}" rel="stylesheet" />
+    <!--//Metis Menu -->
+    <style>
+        #chartdiv {
+            width: 100%;
+            height: 295px;
+        }
+    </style>
+    <style>
+        #sortable {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            width: 60%;
+        }
+
+        #sortable li {
+            margin: 0 5px 5px 5px;
+            padding: 5px;
+            font-size: 1.2em;
+            height: 1.5em;
+        }
+
+        html>body #sortable li {
+            height: 1.5em;
+            line-height: 1.2em;
+        }
+
+        .ui-state-highlight {
+            height: 1.5em;
+            line-height: 1.2em;
+        }
+    </style>
+
+    <!--pie-chart -->
+    <!-- index page sales reviews visitors pie chart -->
+    <script src="{{ asset('backend/js/pie-chart.js') }}" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
         $('#demo-pie-1').pieChart({
           barColor: '#2dde98',
           trackColor: '#eee',
@@ -103,14 +131,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
           },
         });
       });
-  </script>
-  <!-- //pie-chart -->
-  <!-- index page sales reviews visitors pie chart -->
-  <!-- requried-jsfiles-for owl -->
-  <link href="{{ asset('backend/css/owl.carousel.css') }}" rel="stylesheet" />
-  <script src="{{ asset('backend/js/owl.carousel.js') }}"></script>
-  <script>
-    $(document).ready(function () {
+    </script>
+    <!-- //pie-chart -->
+    <!-- index page sales reviews visitors pie chart -->
+    <!-- requried-jsfiles-for owl -->
+    <link href="{{ asset('backend/css/owl.carousel.css') }}" rel="stylesheet" />
+    <script src="{{ asset('backend/js/owl.carousel.js') }}"></script>
+    <script>
+        $(document).ready(function () {
         $('#owl-demo').owlCarousel({
           items: 3,
           lazyLoad: true,
@@ -119,547 +147,568 @@ License URL: http://creativecommons.org/licenses/by/3.0/
           nav: true,
         });
       });
-  </script>
-  <!-- //requried-jsfiles-for owl -->
+    </script>
+    <!-- //requried-jsfiles-for owl -->
 </head>
 
 <body class="cbp-spmenu-push">
-  @if(Auth::check())
-  <div class="main-content">
-    <div class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
-      <!--left-fixed -navigation-->
-      <aside class="sidebar-left">
-        <nav class="navbar navbar-inverse">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".collapse"
-              aria-expanded="false">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <h1>
-              <a class="navbar-brand" href="{{url('/dashboard')}}"><span class="fa fa-area-chart"></span> Glance<span
-                  class="dashboard_text">Design dashboard</span></a>
-            </h1>
-          </div>
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="sidebar-menu">
-              <li class="header">Quản Lý Thành Phần Webphim</li>
-              <li class="treeview">
-                <a href="{{url('/dashboard')}}">
-                  <i class="fa fa-dashboard"></i> <span>Dashboard</span>
-                </a>
-              </li>
-              @php
-              $segment = Request::segment(1);
-              @endphp
+    @if(Auth::check())
+    <div class="main-content">
+        <div class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
+            <!--left-fixed -navigation-->
+            <aside class="sidebar-left">
+                <nav class="navbar navbar-inverse">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                            data-target=".collapse" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <h1>
+                            <a class="navbar-brand" href="{{url('/dashboard')}}"><span class="fa fa-area-chart"></span>
+                                Glance<span class="dashboard_text">Design dashboard</span></a>
+                        </h1>
+                    </div>
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="sidebar-menu">
+                            <li class="header">Quản Lý Thành Phần Webphim</li>
+                            <li class="treeview">
+                                <a href="{{url('/dashboard')}}">
+                                    <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                                </a>
+                            </li>
+                            @php
+                            $segment = Request::segment(1);
+                            @endphp
 
-              <li class="treeview active {{($segment=='category')?'active':''}}">
-                <a href="#">
-                  <i class="fa fa-laptop"></i>
-                  <span>Danh mục phim</span>
-                  <i class="fa fa-angle-left pull-right"></i>
-                </a>
-                <ul class="treeview-menu">
-                  <li>
-                    <a href="{{route('category.create')}}"><i class="fa fa-angle-right"></i> Thêm danh mục</a>
-                  </li>
-                  <li>
-                    <a href="{{route('category.index')}}"><i class="fa fa-angle-right"></i> Liệt kê danh mục</a>
-                  </li>
-                </ul>
-              </li>
-              <li class="treeview active {{($segment=='genre')?'active':''}}">
-                <a href="#">
-                  <i class="fa fa-list"></i>
-                  <span>Thể loại phim</span>
-                  <i class="fa fa-angle-left pull-right"></i>
-                </a>
-                <ul class="treeview-menu">
-                  <li>
-                    <a href="{{route('genre.create')}}"><i class="fa fa-angle-right"></i> Thêm thể loại</a>
-                  </li>
-                  <li>
-                    <a href="{{route('genre.index')}}"><i class="fa fa-angle-right"></i> Liệt kê thể loại</a>
-                  </li>
-                </ul>
-              </li>
-              <li class="treeview active {{($segment=='country')?'active':''}}">
-                <a href="#">
-                  <i class="fa fa-globe"></i>
-                  <span>Quốc gia phim</span>
-                  <i class="fa fa-angle-left pull-right"></i>
-                </a>
-                <ul class="treeview-menu">
-                  <li>
-                    <a href="{{route('country.create')}}"><i class="fa fa-angle-right"></i> Thêm quốc gia</a>
-                  </li>
-                  <li>
-                    <a href="{{route('country.index')}}"><i class="fa fa-angle-right"></i> Liệt kê quốc gia</a>
-                  </li>
-                </ul>
-              </li>
-              <li class="treeview active {{($segment=='movie')?'active':''}}">
-                <a href="#">
-                  <i class="fa fa-film"></i>
-                  <span>Phim</span>
-                  <i class="fa fa-angle-left pull-right"></i>
-                </a>
-                <ul class="treeview-menu">
-                  <li>
-                    <a href="{{route('movie.create')}}"><i class="fa fa-angle-right"></i> Thêm phim</a>
-                  </li>
-                  <li>
-                    <a href="{{route('movie.index')}}"><i class="fa fa-angle-right"></i> Liệt kê phim</a>
-                  </li>
-                </ul>
-              </li>
-              <li class="treeview active {{($segment=='episode')?'active':''}}">
-                <a href="#">
-                  <i class="fa fa-video-camera"></i>
-                  <span>Tập phim</span>
-                  <i class="fa fa-angle-left pull-right"></i>
-                </a>
-                <ul class="treeview-menu">
-                  <li>
-                    <a href="{{route('episode.create')}}"><i class="fa fa-angle-right"></i> Thêm tập phim</a>
-                  </li>
-                  <li>
-                    <a href="{{route('episode.index')}}"><i class="fa fa-angle-right"></i> Liệt kê tập phim</a>
-                  </li>
-                </ul>
-              </li>
-              <li class="treeview active {{($segment=='linkmovie')?'active':''}}">
-                <a href="#">
-                  <i class="fa fa-video-camera"></i>
-                  <span>link phim</span>
-                  <i class="fa fa-angle-left pull-right"></i>
-                </a>
-                <ul class="treeview-menu">
-                  <li>
-                    <a href="{{route('linkmovie.create')}}"><i class="fa fa-angle-right"></i> Thêm link phim</a>
-                  </li>
-                  <li>
-                    <a href="{{route('linkmovie.index')}}"><i class="fa fa-angle-right"></i> Liệt kê link phim</a>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-            </li>
-            </ul>
-          </div>
-          <!-- /.navbar-collapse -->
-        </nav>
-      </aside>
+                            <li class="treeview active {{($segment=='category')?'active':''}}">
+                                <a href="#">
+                                    <i class="fa fa-laptop"></i>
+                                    <span>Danh mục phim</span>
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li>
+                                        <a href="{{route('category.create')}}"><i class="fa fa-angle-right"></i> Thêm
+                                            danh mục</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{route('category.index')}}"><i class="fa fa-angle-right"></i> Liệt kê
+                                            danh mục</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="treeview active {{($segment=='genre')?'active':''}}">
+                                <a href="#">
+                                    <i class="fa fa-list"></i>
+                                    <span>Thể loại phim</span>
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li>
+                                        <a href="{{route('genre.create')}}"><i class="fa fa-angle-right"></i> Thêm thể
+                                            loại</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{route('genre.index')}}"><i class="fa fa-angle-right"></i> Liệt kê thể
+                                            loại</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="treeview active {{($segment=='country')?'active':''}}">
+                                <a href="#">
+                                    <i class="fa fa-globe"></i>
+                                    <span>Quốc gia phim</span>
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li>
+                                        <a href="{{route('country.create')}}"><i class="fa fa-angle-right"></i> Thêm
+                                            quốc gia</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{route('country.index')}}"><i class="fa fa-angle-right"></i> Liệt kê
+                                            quốc gia</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="treeview active {{($segment=='movie')?'active':''}}">
+                                <a href="#">
+                                    <i class="fa fa-film"></i>
+                                    <span>Phim</span>
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li>
+                                        <a href="{{route('movie.create')}}"><i class="fa fa-angle-right"></i> Thêm
+                                            phim</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{route('movie.index')}}"><i class="fa fa-angle-right"></i> Liệt kê
+                                            phim</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{route('sort_movie')}}"><i class="fa fa-angle-right"></i> Sắp xếp
+                                            phim</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="treeview active {{($segment=='episode')?'active':''}}">
+                                <a href="#">
+                                    <i class="fa fa-video-camera"></i>
+                                    <span>Tập phim</span>
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li>
+                                        <a href="{{route('episode.create')}}"><i class="fa fa-angle-right"></i> Thêm tập
+                                            phim</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{route('episode.index')}}"><i class="fa fa-angle-right"></i> Liệt kê
+                                            tập phim</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="treeview active {{($segment=='linkmovie')?'active':''}}">
+                                <a href="#">
+                                    <i class="fa fa-video-camera"></i>
+                                    <span>link phim</span>
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li>
+                                        <a href="{{route('linkmovie.create')}}"><i class="fa fa-angle-right"></i> Thêm
+                                            link phim</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{route('linkmovie.index')}}"><i class="fa fa-angle-right"></i> Liệt kê
+                                            link phim</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        </li>
+                        </ul>
+                    </div>
+                    <!-- /.navbar-collapse -->
+                </nav>
+            </aside>
+        </div>
+        <!--left-fixed -navigation-->
+        <!-- header-starts -->
+        <div class="sticky-header header-section">
+            <div class="header-left">
+                <!--toggle button start-->
+                <button id="showLeftPush"><i class="fa fa-bars"></i></button>
+                <!--toggle button end-->
+                <div class="profile_details_left">
+                    <!--notifications of menu start -->
+                    <ul class="nofitications-dropdown">
+                        <li class="dropdown head-dpdn">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i
+                                    class="fa fa-envelope"></i><span class="badge">4</span></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <div class="notification_header">
+                                        <h3>You have 3 new messages</h3>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <div class="user_img">
+                                            <img src="{{ asset('backend/images/1.jpg') }}" alt="" />
+                                        </div>
+                                        <div class="notification_desc">
+                                            <p>Lorem ipsum dolor amet</p>
+                                            <p><span>1 hour ago</span></p>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </a>
+                                </li>
+                                <li class="odd">
+                                    <a href="#">
+                                        <div class="user_img">
+                                            <img src="{{ asset('backend/images/4.jpg') }}" alt="" />
+                                        </div>
+                                        <div class="notification_desc">
+                                            <p>Lorem ipsum dolor amet</p>
+                                            <p><span>1 hour ago</span></p>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <div class="user_img">
+                                            <img src="{{ asset('backend/images/3.jpg') }}" alt="" />
+                                        </div>
+                                        <div class="notification_desc">
+                                            <p>Lorem ipsum dolor amet</p>
+                                            <p><span>1 hour ago</span></p>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <div class="user_img">
+                                            <img src="{{ asset('backend/images/2.jpg') }}" alt="" />
+                                        </div>
+                                        <div class="notification_desc">
+                                            <p>Lorem ipsum dolor amet</p>
+                                            <p><span>1 hour ago</span></p>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <div class="notification_bottom">
+                                        <a href="#">See all messages</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown head-dpdn">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i
+                                    class="fa fa-bell"></i><span class="badge blue">4</span></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <div class="notification_header">
+                                        <h3>You have 3 new notification</h3>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <div class="user_img">
+                                            <img src="{{ asset('backend/images/4.jpg') }}" alt="" />
+                                        </div>
+                                        <div class="notification_desc">
+                                            <p>Lorem ipsum dolor amet</p>
+                                            <p><span>1 hour ago</span></p>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </a>
+                                </li>
+                                <li class="odd">
+                                    <a href="#">
+                                        <div class="user_img">
+                                            <img src="{{ asset('backend/images/1.jpg') }}" alt="" />
+                                        </div>
+                                        <div class="notification_desc">
+                                            <p>Lorem ipsum dolor amet</p>
+                                            <p><span>1 hour ago</span></p>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <div class="user_img">
+                                            <img src="{{ asset('backend/images/3.jpg') }}" alt="" />
+                                        </div>
+                                        <div class="notification_desc">
+                                            <p>Lorem ipsum dolor amet</p>
+                                            <p><span>1 hour ago</span></p>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <div class="user_img">
+                                            <img src="{{ asset('backend/images/2.jpg') }}" alt="" />
+                                        </div>
+                                        <div class="notification_desc">
+                                            <p>Lorem ipsum dolor amet</p>
+                                            <p><span>1 hour ago</span></p>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <div class="notification_bottom">
+                                        <a href="#">See all notifications</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown head-dpdn">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i
+                                    class="fa fa-tasks"></i><span class="badge blue1">8</span></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <div class="notification_header">
+                                        <h3>You have 8 pending task</h3>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <div class="task-info">
+                                            <span class="task-desc">Database update</span><span
+                                                class="percentage">40%</span>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                        <div class="progress progress-striped active">
+                                            <div class="bar yellow" style="width: 40%"></div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <div class="task-info">
+                                            <span class="task-desc">Dashboard done</span><span
+                                                class="percentage">90%</span>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                        <div class="progress progress-striped active">
+                                            <div class="bar green" style="width: 90%"></div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <div class="task-info">
+                                            <span class="task-desc">Mobile App</span><span class="percentage">33%</span>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                        <div class="progress progress-striped active">
+                                            <div class="bar red" style="width: 33%"></div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <div class="task-info">
+                                            <span class="task-desc">Issues fixed</span><span
+                                                class="percentage">80%</span>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                        <div class="progress progress-striped active">
+                                            <div class="bar blue" style="width: 80%"></div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <div class="notification_bottom">
+                                        <a href="#">See all pending tasks</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <!--notification menu end -->
+                <div class="clearfix"></div>
+            </div>
+            <div class="header-right">
+                <!--search-box-->
+                <div class="search-box">
+                    <form class="input">
+                        <input class="sb-search-input input__field--madoka" placeholder="Search..." type="search"
+                            id="input-31" />
+                        <label class="input__label" for="input-31">
+                            <svg class="graphic" width="100%" height="100%" viewBox="0 0 404 77"
+                                preserveAspectRatio="none">
+                                <path d="m0,0l404,0l0,77l-404,0l0,-77z" />
+                            </svg>
+                        </label>
+                    </form>
+                </div>
+                <!--//end-search-box-->
+                <div class="profile_details">
+                    <ul>
+                        <li class="dropdown profile_details_drop">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                <div class="profile_img">
+                                    <span class="prfil-img"><img src="{{ asset('backend/images/2.jpg') }}" alt="" />
+                                    </span>
+                                    <div class="user-name">
+                                        <p>Admin Name</p>
+                                        <span>Administrator</span>
+                                    </div>
+                                    <i class="fa fa-angle-down lnr"></i>
+                                    <i class="fa fa-angle-up lnr"></i>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                            <ul class="dropdown-menu drp-mnu">
+                                <li>
+                                    <a href="#"><i class="fa fa-cog"></i> Settings</a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fa fa-user"></i> My Account</a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fa fa-suitcase"></i> Profile</a>
+                                </li>
+                                <li>
+                                    {{-- <a href="#"><i class="fa fa-sign-out"></i> Logout</a> --}}
+                                    <form action="{{ route('logout') }}" method="POST">
+                                        @csrf
+                                        <button type="submit" class="btn btn-danger">Logout</button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <!-- //header-ends -->
+        <!-- main content start-->
+        <div id="page-wrapper">
+            <div class="main-page">
+                <div class="col_3">
+                    <div class="col-md-3 widget widget1">
+                        <div class="r3_counter_box">
+                            <i class="pull-left fa fa-file icon-rounded"></i>
+                            <a href="{{route('category.index')}}">
+                                <div class="stats">
+                                    <h5><strong>{{$category_total}}</strong></h5>
+                                    <span>Danh mục phim</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-3 widget widget1">
+                        <div class="r3_counter_box">
+                            <i class="pull-left fa fa-child user1 icon-rounded"></i>
+                            <a href="{{route('genre.index')}}">
+
+                                <div class="stats">
+                                    <h5><strong>{{$genre_total}}</strong></h5>
+                                    <span>Thể loại phim</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-3 widget widget1">
+                        <div class="r3_counter_box">
+                            <i class="pull-left fa fa-globe user2 icon-rounded"></i>
+                            <a href="{{route('country.index')}}">
+
+                                <div class="stats">
+                                    <h5><strong>{{$country_total}}</strong></h5>
+                                    <span>Quốc gia</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-3 widget widget1">
+                        <div class="r3_counter_box">
+                            <i class="pull-left fa fa-film dollar1 icon-rounded"></i>
+                            <a href="{{route('movie.index')}}">
+
+                                <div class="stats">
+                                    <h5><strong>{{$movie_total}}</strong></h5>
+                                    <span>Phim</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-3 widget">
+                        <div class="r3_counter_box">
+                            <i class="pull-left fa fa-users dollar2 icon-rounded"></i>
+                            <div class="stats">
+                                <h5><strong>1450</strong></h5>
+                                <span>Người dùng</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="row-one widgettable">
+
+                </div>
+
+                <!-- for amcharts js -->
+                <script src="{{ asset('backend/js/amcharts.js') }}"></script>
+                <script src="{{ asset('backend/js/serial.js') }}"></script>
+                <script src="{{ asset('backend/js/export.min.js') }}"></script>
+                <link rel="stylesheet" href="{{ asset('backend/css/export.css') }}" type="text/css" media="all" />
+                <script src="{{ asset('backend/js/light.js') }}"></script>
+                <!-- for amcharts js -->
+                <script src="{{ asset('backend/js/index1.js') }}"></script>
+
+                <div class="col-md-12">
+                    @yield('content')
+
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <!--footer-->
+        <div class="footer">
+            <p>
+                &copy; 2018 Glance Design Dashboard. All Rights Reserved | Design by
+                <a href="https://w3layouts.com/" target="_blank">w3layouts</a>
+            </p>
+        </div>
+        <!--//footer-->
     </div>
-    <!--left-fixed -navigation-->
-    <!-- header-starts -->
-    <div class="sticky-header header-section">
-      <div class="header-left">
-        <!--toggle button start-->
-        <button id="showLeftPush"><i class="fa fa-bars"></i></button>
-        <!--toggle button end-->
-        <div class="profile_details_left">
-          <!--notifications of menu start -->
-          <ul class="nofitications-dropdown">
-            <li class="dropdown head-dpdn">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i
-                  class="fa fa-envelope"></i><span class="badge">4</span></a>
-              <ul class="dropdown-menu">
-                <li>
-                  <div class="notification_header">
-                    <h3>You have 3 new messages</h3>
-                  </div>
-                </li>
-                <li>
-                  <a href="#">
-                    <div class="user_img">
-                      <img src="{{ asset('backend/images/1.jpg') }}" alt="" />
-                    </div>
-                    <div class="notification_desc">
-                      <p>Lorem ipsum dolor amet</p>
-                      <p><span>1 hour ago</span></p>
-                    </div>
-                    <div class="clearfix"></div>
-                  </a>
-                </li>
-                <li class="odd">
-                  <a href="#">
-                    <div class="user_img">
-                      <img src="{{ asset('backend/images/4.jpg') }}" alt="" />
-                    </div>
-                    <div class="notification_desc">
-                      <p>Lorem ipsum dolor amet</p>
-                      <p><span>1 hour ago</span></p>
-                    </div>
-                    <div class="clearfix"></div>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <div class="user_img">
-                      <img src="{{ asset('backend/images/3.jpg') }}" alt="" />
-                    </div>
-                    <div class="notification_desc">
-                      <p>Lorem ipsum dolor amet</p>
-                      <p><span>1 hour ago</span></p>
-                    </div>
-                    <div class="clearfix"></div>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <div class="user_img">
-                      <img src="{{ asset('backend/images/2.jpg') }}" alt="" />
-                    </div>
-                    <div class="notification_desc">
-                      <p>Lorem ipsum dolor amet</p>
-                      <p><span>1 hour ago</span></p>
-                    </div>
-                    <div class="clearfix"></div>
-                  </a>
-                </li>
-                <li>
-                  <div class="notification_bottom">
-                    <a href="#">See all messages</a>
-                  </div>
-                </li>
-              </ul>
-            </li>
-            <li class="dropdown head-dpdn">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i
-                  class="fa fa-bell"></i><span class="badge blue">4</span></a>
-              <ul class="dropdown-menu">
-                <li>
-                  <div class="notification_header">
-                    <h3>You have 3 new notification</h3>
-                  </div>
-                </li>
-                <li>
-                  <a href="#">
-                    <div class="user_img">
-                      <img src="{{ asset('backend/images/4.jpg') }}" alt="" />
-                    </div>
-                    <div class="notification_desc">
-                      <p>Lorem ipsum dolor amet</p>
-                      <p><span>1 hour ago</span></p>
-                    </div>
-                    <div class="clearfix"></div>
-                  </a>
-                </li>
-                <li class="odd">
-                  <a href="#">
-                    <div class="user_img">
-                      <img src="{{ asset('backend/images/1.jpg') }}" alt="" />
-                    </div>
-                    <div class="notification_desc">
-                      <p>Lorem ipsum dolor amet</p>
-                      <p><span>1 hour ago</span></p>
-                    </div>
-                    <div class="clearfix"></div>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <div class="user_img">
-                      <img src="{{ asset('backend/images/3.jpg') }}" alt="" />
-                    </div>
-                    <div class="notification_desc">
-                      <p>Lorem ipsum dolor amet</p>
-                      <p><span>1 hour ago</span></p>
-                    </div>
-                    <div class="clearfix"></div>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <div class="user_img">
-                      <img src="{{ asset('backend/images/2.jpg') }}" alt="" />
-                    </div>
-                    <div class="notification_desc">
-                      <p>Lorem ipsum dolor amet</p>
-                      <p><span>1 hour ago</span></p>
-                    </div>
-                    <div class="clearfix"></div>
-                  </a>
-                </li>
-                <li>
-                  <div class="notification_bottom">
-                    <a href="#">See all notifications</a>
-                  </div>
-                </li>
-              </ul>
-            </li>
-            <li class="dropdown head-dpdn">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i
-                  class="fa fa-tasks"></i><span class="badge blue1">8</span></a>
-              <ul class="dropdown-menu">
-                <li>
-                  <div class="notification_header">
-                    <h3>You have 8 pending task</h3>
-                  </div>
-                </li>
-                <li>
-                  <a href="#">
-                    <div class="task-info">
-                      <span class="task-desc">Database update</span><span class="percentage">40%</span>
-                      <div class="clearfix"></div>
-                    </div>
-                    <div class="progress progress-striped active">
-                      <div class="bar yellow" style="width: 40%"></div>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <div class="task-info">
-                      <span class="task-desc">Dashboard done</span><span class="percentage">90%</span>
-                      <div class="clearfix"></div>
-                    </div>
-                    <div class="progress progress-striped active">
-                      <div class="bar green" style="width: 90%"></div>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <div class="task-info">
-                      <span class="task-desc">Mobile App</span><span class="percentage">33%</span>
-                      <div class="clearfix"></div>
-                    </div>
-                    <div class="progress progress-striped active">
-                      <div class="bar red" style="width: 33%"></div>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <div class="task-info">
-                      <span class="task-desc">Issues fixed</span><span class="percentage">80%</span>
-                      <div class="clearfix"></div>
-                    </div>
-                    <div class="progress progress-striped active">
-                      <div class="bar blue" style="width: 80%"></div>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <div class="notification_bottom">
-                    <a href="#">See all pending tasks</a>
-                  </div>
-                </li>
-              </ul>
-            </li>
-          </ul>
-          <div class="clearfix"></div>
-        </div>
-        <!--notification menu end -->
-        <div class="clearfix"></div>
-      </div>
-      <div class="header-right">
-        <!--search-box-->
-        <div class="search-box">
-          <form class="input">
-            <input class="sb-search-input input__field--madoka" placeholder="Search..." type="search" id="input-31" />
-            <label class="input__label" for="input-31">
-              <svg class="graphic" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
-                <path d="m0,0l404,0l0,77l-404,0l0,-77z" />
-              </svg>
-            </label>
-          </form>
-        </div>
-        <!--//end-search-box-->
-        <div class="profile_details">
-          <ul>
-            <li class="dropdown profile_details_drop">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                <div class="profile_img">
-                  <span class="prfil-img"><img src="{{ asset('backend/images/2.jpg') }}" alt="" />
-                  </span>
-                  <div class="user-name">
-                    <p>Admin Name</p>
-                    <span>Administrator</span>
-                  </div>
-                  <i class="fa fa-angle-down lnr"></i>
-                  <i class="fa fa-angle-up lnr"></i>
-                  <div class="clearfix"></div>
-                </div>
-              </a>
-              <ul class="dropdown-menu drp-mnu">
-                <li>
-                  <a href="#"><i class="fa fa-cog"></i> Settings</a>
-                </li>
-                <li>
-                  <a href="#"><i class="fa fa-user"></i> My Account</a>
-                </li>
-                <li>
-                  <a href="#"><i class="fa fa-suitcase"></i> Profile</a>
-                </li>
-                <li>
-                  {{-- <a href="#"><i class="fa fa-sign-out"></i> Logout</a> --}}
-                  <form action="{{ route('logout') }}" method="POST">
-                    @csrf
-                    <button type="submit" class="btn btn-danger">Logout</button>
-                  </form>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-        <div class="clearfix"></div>
-      </div>
-      <div class="clearfix"></div>
-    </div>
-    <!-- //header-ends -->
-    <!-- main content start-->
-    <div id="page-wrapper">
-      <div class="main-page">
-        <div class="col_3">
-          <div class="col-md-3 widget widget1">
-            <div class="r3_counter_box">
-              <i class="pull-left fa fa-file icon-rounded"></i>
-              <a href="{{route('category.index')}}">
-                <div class="stats">
-                  <h5><strong>{{$category_total}}</strong></h5>
-                  <span>Danh mục phim</span>
-                </div>
-              </a>
+    @else
+    <x-guest-layout>
+        <!-- Session Status -->
+        <x-auth-session-status class="mb-4" :status="session('status')" />
+
+        <form method="POST" action="{{ route('login') }}">
+            @csrf
+
+            <!-- Email Address -->
+            <div>
+                <x-input-label for="email" :value="__('Email')" />
+                <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')"
+                    required autofocus autocomplete="username" />
+                <x-input-error :messages="$errors->get('email')" class="mt-2" />
             </div>
-          </div>
-          <div class="col-md-3 widget widget1">
-            <div class="r3_counter_box">
-              <i class="pull-left fa fa-child user1 icon-rounded"></i>
-              <a href="{{route('genre.index')}}">
 
-                <div class="stats">
-                  <h5><strong>{{$genre_total}}</strong></h5>
-                  <span>Thể loại phim</span>
-                </div>
-              </a>
+            <!-- Password -->
+            <div class="mt-4">
+                <x-input-label for="password" :value="__('Password')" />
+
+                <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" required
+                    autocomplete="current-password" />
+
+                <x-input-error :messages="$errors->get('password')" class="mt-2" />
             </div>
-          </div>
-          <div class="col-md-3 widget widget1">
-            <div class="r3_counter_box">
-              <i class="pull-left fa fa-globe user2 icon-rounded"></i>
-              <a href="{{route('country.index')}}">
 
-                <div class="stats">
-                  <h5><strong>{{$country_total}}</strong></h5>
-                  <span>Quốc gia</span>
-                </div>
-              </a>
+            <!-- Remember Me -->
+            <div class="block mt-4">
+                <label for="remember_me" class="inline-flex items-center">
+                    <input id="remember_me" type="checkbox"
+                        class="rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800"
+                        name="remember">
+                    <span class="ms-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Remember me') }}</span>
+                </label>
             </div>
-          </div>
-          <div class="col-md-3 widget widget1">
-            <div class="r3_counter_box">
-              <i class="pull-left fa fa-film dollar1 icon-rounded"></i>
-              <a href="{{route('movie.index')}}">
 
-                <div class="stats">
-                  <h5><strong>{{$movie_total}}</strong></h5>
-                  <span>Phim</span>
-                </div>
-              </a>
+            <div class="flex items-center justify-end mt-4">
+                @if (Route::has('password.request'))
+                <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
+                    href="{{ route('password.request') }}">
+                    {{ __('Forgot your password?') }}
+                </a>
+                @endif
+
+                <x-primary-button class="ms-3">
+                    {{ __('Log in') }}
+                </x-primary-button>
             </div>
-          </div>
-          <div class="col-md-3 widget">
-            <div class="r3_counter_box">
-              <i class="pull-left fa fa-users dollar2 icon-rounded"></i>
-              <div class="stats">
-                <h5><strong>1450</strong></h5>
-                <span>Người dùng</span>
-              </div>
-            </div>
-          </div>
-          <div class="clearfix"></div>
-        </div>
-        <div class="row-one widgettable">
+        </form>
+    </x-guest-layout>
 
-        </div>
-
-        <!-- for amcharts js -->
-        <script src="{{ asset('backend/js/amcharts.js') }}"></script>
-        <script src="{{ asset('backend/js/serial.js') }}"></script>
-        <script src="{{ asset('backend/js/export.min.js') }}"></script>
-        <link rel="stylesheet" href="{{ asset('backend/css/export.css') }}" type="text/css" media="all" />
-        <script src="{{ asset('backend/js/light.js') }}"></script>
-        <!-- for amcharts js -->
-        <script src="{{ asset('backend/js/index1.js') }}"></script>
-
-        <div class="col-md-12">
-          @yield('content')
-
-        </div>
-        <div class="clearfix"></div>
-      </div>
-    </div>
-    <!--footer-->
-    <div class="footer">
-      <p>
-        &copy; 2018 Glance Design Dashboard. All Rights Reserved | Design by
-        <a href="https://w3layouts.com/" target="_blank">w3layouts</a>
-      </p>
-    </div>
-    <!--//footer-->
-  </div>
-  @else
-  <x-guest-layout>
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
-
-    <form method="POST" action="{{ route('login') }}">
-      @csrf
-
-      <!-- Email Address -->
-      <div>
-        <x-input-label for="email" :value="__('Email')" />
-        <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required
-          autofocus autocomplete="username" />
-        <x-input-error :messages="$errors->get('email')" class="mt-2" />
-      </div>
-
-      <!-- Password -->
-      <div class="mt-4">
-        <x-input-label for="password" :value="__('Password')" />
-
-        <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" required
-          autocomplete="current-password" />
-
-        <x-input-error :messages="$errors->get('password')" class="mt-2" />
-      </div>
-
-      <!-- Remember Me -->
-      <div class="block mt-4">
-        <label for="remember_me" class="inline-flex items-center">
-          <input id="remember_me" type="checkbox"
-            class="rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800"
-            name="remember">
-          <span class="ms-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Remember me') }}</span>
-        </label>
-      </div>
-
-      <div class="flex items-center justify-end mt-4">
-        @if (Route::has('password.request'))
-        <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
-          href="{{ route('password.request') }}">
-          {{ __('Forgot your password?') }}
-        </a>
-        @endif
-
-        <x-primary-button class="ms-3">
-          {{ __('Log in') }}
-        </x-primary-button>
-      </div>
-    </form>
-  </x-guest-layout>
-
-  @endif
-  <!-- new added graphs chart js-->
-  <script src="{{ asset('backend/js/Chart.bundle.js') }}"></script>
-  <script src="{{ asset('backend/js/utils.js') }}"></script>
-  <script>
-    var MONTHS = [
+    @endif
+    <!-- new added graphs chart js-->
+    <script src="{{ asset('backend/js/Chart.bundle.js') }}"></script>
+    <script src="{{ asset('backend/js/utils.js') }}"></script>
+    <script>
+        var MONTHS = [
         'January',
         'February',
         'March',
@@ -807,13 +856,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
           window.myBar.update();
         });
-  </script>
-  <!-- new added graphs chart js-->
-  <!-- Classie -->
-  <!-- for toggle left push menu script -->
-  <script src="{{ asset('backend/js/classie.js') }}"></script>
-  <script>
-    var menuLeft = document.getElementById('cbp-spmenu-s1'),
+    </script>
+    <!-- new added graphs chart js-->
+    <!-- Classie -->
+    <!-- for toggle left push menu script -->
+    <script src="{{ asset('backend/js/classie.js') }}"></script>
+    <script>
+        var menuLeft = document.getElementById('cbp-spmenu-s1'),
         showLeftPush = document.getElementById('showLeftPush'),
         body = document.body;
 
@@ -829,23 +878,23 @@ License URL: http://creativecommons.org/licenses/by/3.0/
           classie.toggle(showLeftPush, 'disabled');
         }
       }
-  </script>
-  <!-- //Classie -->
-  <!-- //for toggle left push menu script -->
-  <!--scrolling js-->
-  <script src="{{ asset('backend/js/jquery.nicescroll.js') }}"></script>
-  <script src="{{ asset('backend/js/scripts.js') }}"></script>
-  <!--//scrolling js-->
-  <!-- side nav js -->
-  <script src="{{ asset('backend/js/SidebarNav.min.js') }}" type="text/javascript"></script>
-  <script>
-    $('.sidebar-menu').SidebarNav();
-  </script>
-  <!-- //side nav js -->
-  <!-- for index page weekly sales java script -->
-  <script src="{{ asset('backend/js/SimpleChart.js') }}"></script>
-  <script>
-    var graphdata1 = {
+    </script>
+    <!-- //Classie -->
+    <!-- //for toggle left push menu script -->
+    <!--scrolling js-->
+    <script src="{{ asset('backend/js/jquery.nicescroll.js') }}"></script>
+    <script src="{{ asset('backend/js/scripts.js') }}"></script>
+    <!--//scrolling js-->
+    <!-- side nav js -->
+    <script src="{{ asset('backend/js/SidebarNav.min.js') }}" type="text/javascript"></script>
+    <script>
+        $('.sidebar-menu').SidebarNav();
+    </script>
+    <!-- //side nav js -->
+    <!-- for index page weekly sales java script -->
+    <script src="{{ asset('backend/js/SimpleChart.js') }}"></script>
+    <script>
+        var graphdata1 = {
         linecolor: '#CCA300',
         title: 'Monday',
         values: [
@@ -1095,29 +1144,60 @@ License URL: http://creativecommons.org/licenses/by/3.0/
           yaxislabel: 'Profit in $',
         });
       });
-  </script>
-  <!-- //for index page weekly sales java script -->
-  <!-- Bootstrap Core JavaScript -->
-  <script src="{{ asset('backend/js/bootstrap.js') }}"></script>
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    </script>
+    <!-- //for index page weekly sales java script -->
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{{ asset('backend/js/bootstrap.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
 
-  <!-- Owl Carousel JS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-  <script src="//cdn.datatables.net/2.3.3/js/dataTables.min.js"></script>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"></script>
+    <!-- Owl Carousel JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script src="//cdn.datatables.net/2.3.3/js/dataTables.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://code.jquery.com/ui/1.14.1/jquery-ui.js"></script>
+    <script>
+        $(function () {
+    $("#sortable_navbar").sortable({
+        placeholder: "ui-state-highlight",
 
-  <script>
-    $(document).ready(function () {
+        update: function () {
+            var array_id = [];
+
+            $(".category_position li").each(function () {
+                array_id.push($(this).attr("id"));
+            });
+
+            $.ajax({
+                headers: {
+                    "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+                },
+                url: "{{ route('resorting_navbar') }}",
+                method: "POST",
+                data: { array_id: array_id },
+                success: function () {
+                    alert("sắp xếp thứ tự menu thành công");
+                }
+            });
+        }
+    });
+
+    $("#sortable_navbar").disableSelection();
+});
+    </script>
+
+    <script>
+        $(document).ready(function () {
         $('#tablephim').DataTable();
       });
-  </script>
-  <script>
-    function ChangeToSlug() {
+    </script>
+    <script>
+        function ChangeToSlug() {
             var slug = document.getElementById("slug").value.toLowerCase();
             slug = slug.replace(/á|à|ả|ạ|ã|ă|ắ|ằ|ẳ|ẵ|ặ|â|ấ|ầ|ẩ|ẫ|ậ/gi, 'a')
                        .replace(/é|è|ẻ|ẽ|ẹ|ê|ế|ề|ể|ễ|ệ/gi, 'e')
@@ -1132,11 +1212,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                        .replace(/^\-+|\-+$/g, '');
             document.getElementById('convert_slug').value = slug;
         }
-  </script>
+    </script>
 
-  <!-- JavaScript cho Sortable -->
-  <script>
-    $('.show_video').click(function() {
+    <!-- JavaScript cho Sortable -->
+    <script>
+        $('.show_video').click(function() {
           var movie_id = $(this).data('movie_video_id');
           var episode_id = $(this).data('video_episode');
           // alert(movie_id);
@@ -1210,7 +1290,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 }
             });
         });
-        
+
         $('.select-season').change(function() {
         var season = $(this).find(':selected').val();
         var id_phim = $(this).attr('id');
@@ -1229,7 +1309,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             });
         });
 
-        
+
 
             $('.order_position').sortable({
                 placeholder: 'ui-state-highlight',
@@ -1253,9 +1333,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     });
                 }
             });
-  </script>
+    </script>
 
-  <!-- //Bootstrap Core JavaScript -->
+    <!-- //Bootstrap Core JavaScript -->
 </body>
 
 </html>

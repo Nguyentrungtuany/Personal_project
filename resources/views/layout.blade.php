@@ -143,7 +143,7 @@
                             <li class="current-menu-item active"><a title="Trang Chủ"
                                     href="{{ route('homepage') }}">Trang
                                     Chủ</a></li>
-                            @foreach($category_home as $key => $cate)
+                            @foreach($Category_home as $key => $cate)
                             <li class="mega"><a title="{{ $cate->title }}"
                                     href="{{ route('category',  $cate->slug)}}">{{
                                     $cate->title }}</a></li>

@@ -31,18 +31,19 @@ class LinkMovieController extends Controller
      */
     public function store(Request $request)
     {
-         $data = $request->validate([
-        'title' => 'required|unique:categories|max:255',
-        'description' => 'required|max:255',
-        'status' => 'required',
-    ],
-    [
-        'title.unique' => 'Tiêu đề đã tồn tại',
-        'title.required' => 'Tiêu đề không được để trống',
-        'description.required' => 'Mô tả không được để trống',
-        'status.required' => 'Trạng thái không được để trống',
-    ]
-);
+        $data = $request->validate(
+            [
+                'title' => 'required|unique:categories|max:255',
+                'description' => 'required|max:255',
+                'status' => 'required',
+            ],
+            [
+                'title.unique' => 'Tiêu đề đã tồn tại',
+                'title.required' => 'Tiêu đề không được để trống',
+                'description.required' => 'Mô tả không được để trống',
+                'status.required' => 'Trạng thái không được để trống',
+            ]
+        );
 
         $linkmovie = new LinkMovie();
         $linkmovie->title = $data['title'];
@@ -77,16 +78,17 @@ class LinkMovieController extends Controller
      */
     public function update(Request $request, string $id)
     {
-            $data = $request->validate([
-            'title' => 'required|max:255',
-            'description' => 'required|max:255',
-            'status' => 'required',
-        ],
-        [
-            'title.required' => 'Tiêu đề không được để trống',
-            'description.required' => 'Mô tả không được để trống',
-            'status.required' => 'Trạng thái không được để trống',
-        ]
+        $data = $request->validate(
+            [
+                'title' => 'required|max:255',
+                'description' => 'required|max:255',
+                'status' => 'required',
+            ],
+            [
+                'title.required' => 'Tiêu đề không được để trống',
+                'description.required' => 'Mô tả không được để trống',
+                'status.required' => 'Trạng thái không được để trống',
+            ]
         );
         $linkmovie = LinkMovie::find($id);
         $linkmovie->title = $data['title'];
