@@ -103,7 +103,7 @@ class IndexController extends Controller
         $meta_description = $cate_slug->description;
         $meta_image = '';
 
-        $movie = Movie::where('category_id', $cate_slug->id)->orderBy('ngaycapnhap', 'DESC')->paginate(40);
+        $movie = Movie::where('category_id', $cate_slug->id)->orderBy('position', 'ASC')->paginate(40);
         return view('page.category', compact('cate_slug', 'movie', 'meta_title', 'meta_description', 'meta_image')); // gọi file resources/views/page/category.blade.php
     }
     public function year($year)

@@ -1,21 +1,22 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\IndexController;
-use App\Http\Controllers\HomeController;
-//admin controller
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\GenreController;
 use App\Http\Controllers\CountryController;
-use App\Http\Controllers\MovieController;
 use App\Http\Controllers\EpisodeController;
+use App\Http\Controllers\GenreController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\IndexController;
 use App\Http\Controllers\InfoController;
 use App\Http\Controllers\LinkMovieController;
-//model
+use App\Http\Controllers\LoginFBController;
+use App\Http\Controllers\LoginGoogleController;
+use App\Http\Controllers\MovieController;
+use App\Http\Controllers\ProfileController;
 use App\Models\Category;
 use App\Models\Episode;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', [IndexController::class, 'home'])->name('homepage');
 
@@ -53,12 +54,19 @@ Route::post('/filter-topview-phim', [MovieController::class, 'filter_topview']);
 Route::get('/filter-topview-default', [MovieController::class, 'filter_default']);
 Route::get('/sort_movie', [MovieController::class, 'sort_movie'])->name('sort_movie');
 Route::post('/resorting_navbar', [MovieController::class, 'resorting_navbar'])->name('resorting_navbar');
+Route::post('/resorting_movie', [MovieController::class, 'resorting_movie'])->name('resorting_movie');
 Route::post('/update-season-phim', [MovieController::class, 'update_season']);
 // thay đổi dữ liệu movie bằng ajax
 
 //Thông tin trang web
 Route::resource('/info', InfoController::class);
 
+Route::get('auth/google', [LoginGoogleController::class, 'redirectToGoogle'])->name('login-by-google');
+Route::get('auth/google/callback', [LoginGoogleController::class, 'handleGoogleCallback']);
+Route::get('logout-home', [LoginGoogleController::class, 'logout_home'])->name('logout-home');
+
+Route::get('/auth/facebook', [LoginFBController::class, 'redirectToFacebook'])->name('login-by-facebook');
+Route::get('/auth/facebook/callback', [LoginFBController::class, 'handleFacebookCallback'])->name('facebook.callback');
 
 Route::get('/category-choose', [MovieController::class, 'category_choose'])->name('category-choose');
 Route::get('/country-choose', [MovieController::class, 'country_choose'])->name('country-choose');

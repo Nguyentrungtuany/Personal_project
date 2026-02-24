@@ -1163,6 +1163,35 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <script src="https://code.jquery.com/ui/1.14.1/jquery-ui.js"></script>
     <script>
         $(function () {
+    $(".sortable_movie").sortable({
+        placeholder: "ui-state-highlight",
+
+        update: function () {
+            var movie_array = [];
+
+            $(".movie_position .box_phim").each(function () {
+                movie_array.push($(this).attr("id"));
+            });
+
+            $.ajax({
+                headers: {
+                    "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+                },
+                url: "{{ route('resorting_movie') }}",
+                method: "POST",
+                data: { movie_array: movie_array },
+                success: function () {
+                    alert("sắp xếp thứ tự phim thành công");
+                }
+            });
+        }
+    });
+
+    $("#sortable_movie").disableSelection();
+});
+    </script>
+    <script>
+        $(function () {
     $("#sortable_navbar").sortable({
         placeholder: "ui-state-highlight",
 

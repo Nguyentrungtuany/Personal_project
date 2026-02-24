@@ -123,7 +123,7 @@ dd($Category_home)
             </div>
 
             <div id="halim-advanced-widget-2-ajax-box" class="halim_box">
-                @foreach($cate_home->movie->take(12) as $key => $movie)
+                @foreach($cate_home->movie->sortBy('position')->take(12) as $key => $movie)
                 <article class="col-md-3 col-sm-3 col-xs-6 thumb grid-item post-37606">
                     <div class="halim-item">
                         <a class="halim-thumb" href="{{ route('movie',$movie->slug) }}" title="{{ $movie->title }}">

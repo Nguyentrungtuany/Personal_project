@@ -119,11 +119,14 @@ class MovieController extends Controller
     }
     public function sort_movie()
     {
-        // $category = Category::orderBy('id', 'DESC')->get();
-        // Nếu có dùng ở đâu khác
+        // Sắp xếp tăng dần theo position
         $category = Category::orderBy('position', 'ASC')->where('status', 1)->get();
 
-        return view('admincp.movie.sort_movie', compact('category'));
+        $Category_home = Category::with(['movie' => function ($q) {
+            $q->withCount('episode')->where('status', 1);
+        }])->orderBy('position', 'ASC')->where('status', 1)->get();
+
+        return view('admincp.movie.sort_movie', compact('category', 'Category_home'));
     }
     public function resorting_navbar(Request $request)
     {
@@ -135,7 +138,16 @@ class MovieController extends Controller
             $category->save();
         }
     }
+    public function resorting_movie(Request $request)
+    {
+        $data = $request->all();
 
+        foreach ($data['movie_array'] as $key => $value) {
+            $movie = Movie::find($value);
+            $movie->position = $key;
+            $movie->save();
+        }
+    }
     public function update_year(Request $request)
     {
         $data = $request->all();

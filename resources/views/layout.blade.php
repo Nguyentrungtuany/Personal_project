@@ -140,10 +140,10 @@
                 <div class="collapse navbar-collapse" id="halim">
                     <div class="menu-menu_1-container">
                         <ul id="menu-menu_1" class="nav navbar-nav navbar-left">
-                            <li class="current-menu-item active"><a title="Trang Chủ"
-                                    href="{{ route('homepage') }}">Trang
-                                    Chủ</a></li>
-                            @foreach($Category_home as $key => $cate)
+                            <li class="current-menu-item active">
+                                <a title="Trang Chủ" href="{{ route('homepage') }}">Trang Chủ</a>
+                            </li>
+                            @foreach($category_home as $key => $cate)
                             <li class="mega"><a title="{{ $cate->title }}"
                                     href="{{ route('category',  $cate->slug)}}">{{
                                     $cate->title }}</a></li>
@@ -185,7 +185,21 @@
                                             href="{{ url('nam', $year) }}">{{ $year }}</a>
                             </li>
                             @endfor
+
                         </ul>
+                        <li class="mega dropdown">
+                            <a title="Đăng nhập" href="#" data-toggle="dropdown" class="dropdown-toggle"
+                                aria-haspopup="true">Đăng nhập <span class="caret"></span></a>
+                            <ul role="menu" class=" dropdown-menu">
+                                <li>
+                                    <a title="Đăng nhập bằng google" href="{{ route('login-by-google') }}">Đăng
+                                        nhập google</a>
+                                    <a title="Đăng nhập bằng facebook" href="{{ route('genre', $gen->slug) }}">Đăng
+                                        nhập facebook</a>
+
+                                </li>
+                            </ul>
+                        </li>
                         </li>
                         </ul>
                     </div>
