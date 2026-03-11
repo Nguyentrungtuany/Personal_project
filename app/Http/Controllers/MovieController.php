@@ -9,6 +9,7 @@ use App\Models\Genre;
 use App\Models\Country;
 use App\Models\Episode;
 use App\Models\Movie_Genre;
+use App\Models\Movie_Category;
 use PhpParser\Node\Expr\AssignOp\Mod;
 use Carbon\Carbon;
 // use Faker\Core\File;
@@ -272,9 +273,10 @@ class MovieController extends Controller
         $category = Category::pluck('title', 'id');
         $genre = Genre::pluck('title', 'id');
         $list_genre = Genre::all();
+        $list_category = Category::all();
         $country = Country::pluck('title', 'id');
         $movie = null;
-        return view('admincp.movie.from', compact('category', 'genre', 'country', 'movie', 'list_genre')); // gọi file resources/views/admincp/movie/from.blade.php
+        return view('admincp.movie.from', compact('category', 'genre', 'country', 'movie', 'list_genre', 'list_category')); // gọi file resources/views/admincp/movie/from.blade.php
     }
 
     /**
@@ -379,7 +381,10 @@ class MovieController extends Controller
         $list_genre = Genre::all();
         $movie = Movie::find($id);
         $movie_genre = $movie->movie_genre;
-        return view('admincp.movie.from', compact('category', 'genre', 'country', 'movie', 'list_genre', 'movie_genre'));
+        $movie_category = $movie->movie_category;
+        $list_category = Category::all();
+
+        return view('admincp.movie.from', compact('category', 'genre', 'country', 'movie', 'list_genre', 'movie_genre', 'movie_category', 'list_category'));
     }
 
     /**
@@ -408,6 +413,9 @@ class MovieController extends Controller
         foreach ($data['genre'] as $key => $gen) {
             $movie->genre_id = $gen[0];
         }
+        foreach ($data['category_id'] as $key => $cate) {
+            $movie->category_id = $cate[0];
+        }
         //them hinh anh
 
         $get_image = $request->file('image');
@@ -428,6 +436,7 @@ class MovieController extends Controller
         }
         $movie->save();
         $movie->movie_genre()->sync($data['genre']);
+        $movie->movie_category()->sync($data['category_id']);
 
         return redirect()->route('movie.index');
     }

@@ -3,12 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-
 use Illuminate\Database\Eloquent\Model;
 
-class Movie_Genre extends Model
+class Movie_Category extends Model
 {
-    public $timestamps = false;
     use HasFactory;
-    protected $table = 'movie_genre';
+    //
+    public $timestamps = false;
+    protected $table = 'movie_category';
 }
