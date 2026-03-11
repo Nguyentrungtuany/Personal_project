@@ -40,6 +40,9 @@ class IndexController extends Controller
 {
     public function locphim()
     {
+        $meta_title = 'Lọc Phim';
+        $meta_description = 'Tìm kiếm và lọc phim theo thể loại, quốc gia, năm sản xuất';
+        $meta_image = '';
         $sapxep = $_GET['order'];
         $genre_get = $_GET['genre'];
         $country_get = $_GET['country'];
@@ -54,17 +57,17 @@ class IndexController extends Controller
             $phimhot_trailer = Movie::where('resolution', 5)->where('status', 1)->orderBy('ngaycapnhap', 'DESC')->take(10)->get();
             $movie = Movie::withCount('episode');
             if ($genre_get) {
-                $movie = $movie->where('genre_id', '=', $genre_get);
+                $movie = $movie->where('genre_id', $genre_get);
             } elseif ($country_get) {
-                $movie = $movie->where('country_id', '=', $country_get);
+                $movie = $movie->where('country_id',  $country_get);
             } elseif ($year_get) {
-                $movie = $movie->where('year', '=', $year_get);
+                $movie = $movie->where('year', $year_get);
                 // }elseif($order){
                 //     $movie = $movie->orderBy('title', 'DESC');
             }
             $movie = $movie->orderBy('ngaycapnhap', 'DESC')->paginate(40);
 
-            return view('page.locphim', compact('movie'));
+            return view('page.locphim', compact('movie', 'meta_title', 'meta_description', 'meta_image'));
         }
     }
     public function timkiem()
